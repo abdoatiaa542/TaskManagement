@@ -1,0 +1,43 @@
+package com.example.task_management_api.controller;
+
+
+import com.example.task_management_api.dto.LoginRequest;
+import com.example.task_management_api.dto.RegistrationRequest;
+import com.example.task_management_api.service.auth.IAuthService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    private final IAuthService service;
+
+    public AuthController(IAuthService service) {
+        this.service = service;
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> loginUser(
+            @Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.accepted().body(service.loginUser(request));
+    }
+
+    @PostMapping(value = "/logout")
+    public ResponseEntity<?> logoutUser(
+            @RequestParam(value = "device-token", required = false) String deviceToken) {
+
+        return ResponseEntity.accepted().body(service.logoutUser(deviceToken));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
+        return ResponseEntity.created(URI.create("/api/v1/auth/user-registration"))
+                .body(service.registerUser(request));
+    }
+
+
+}

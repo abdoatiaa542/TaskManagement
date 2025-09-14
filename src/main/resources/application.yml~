@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: TaskManagement
+
+  profiles:
+    active: '@spring.profiles.active@'
+
+  datasource:
+    url: ${application.datasource.url}
+    username: ${application.datasource.username}
+    password: ${application.datasource.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace

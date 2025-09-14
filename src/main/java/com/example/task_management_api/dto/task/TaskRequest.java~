@@ -1,0 +1,13 @@
+package com.example.task_management_api.dto.task;
+
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class TaskRequest {
+    private String title;
+    private String description;
+    private String status; 
+}

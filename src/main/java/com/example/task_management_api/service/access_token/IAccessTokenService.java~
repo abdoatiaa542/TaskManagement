@@ -1,0 +1,13 @@
+package com.example.task_management_api.service.access_token;
+
+public interface IAccessTokenService {
+    com.example.task_management_api.model.AccessToken create(com.example.task_management_api.model.User user);
+
+    com.example.task_management_api.model.AccessToken get(String token);
+
+    boolean exists(String token);
+
+    void delete(String token);
+
+    com.example.task_management_api.model.AccessToken refresh(com.example.task_management_api.model.User user);
+}

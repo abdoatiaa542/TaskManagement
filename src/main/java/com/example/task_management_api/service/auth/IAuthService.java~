@@ -1,0 +1,13 @@
+package com.example.task_management_api.service.auth;
+
+import com.example.task_management_api.dto.RegistrationRequest;
+import org.springframework.lang.Nullable;
+
+public interface IAuthService {
+
+    Object loginUser(Object object);
+
+    Object logoutUser(@Nullable String deviceToken);
+
+    Object registerUser(RegistrationRequest request);
+}
