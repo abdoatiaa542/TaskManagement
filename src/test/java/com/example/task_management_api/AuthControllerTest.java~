@@ -28,7 +28,7 @@ class AuthServiceTest {
 
     @Test
     void registerUser_ShouldSaveNewUser() {
-        RegistrationRequest req = new RegistrationRequest("test@test.com", "test@test.com", "1234");
+        RegistrationRequest req = new RegistrationRequest("test", "test@test.com", "1234");
 
         when(userRepository.existsByEmailIgnoreCase("test@test.com")).thenReturn(false);
         when(passwordEncoder.encode("1234")).thenReturn("encoded");
